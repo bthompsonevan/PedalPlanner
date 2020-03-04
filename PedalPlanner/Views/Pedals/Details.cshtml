@@ -1,0 +1,42 @@
+﻿@model PedalPlanner.Models.Pedal
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pedal</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PedalName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PedalName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PedalType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PedalType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PedalSubType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PedalSubType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PedalColor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PedalColor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PedalID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

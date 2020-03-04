@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PedalPlanner.Models.Pedal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PedalName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PedalType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PedalSubType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PedalColor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PedalName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PedalType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PedalSubType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PedalColor)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PedalID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PedalID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PedalID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

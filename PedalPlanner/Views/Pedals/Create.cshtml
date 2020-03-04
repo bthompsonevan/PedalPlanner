@@ -1,0 +1,57 @@
+﻿@model PedalPlanner.Models.Pedal
+
+@{
+    ViewData["Title"] = "Create";
+    int selectedType = 0;
+}
+
+<h1>Create Pedal</h1>
+
+<h4>Pedal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PedalName" class="control-label">Enter Pedal Name</label>
+                <input asp-for="PedalName" class="form-control" />
+                <span asp-validation-for="PedalName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PedalType" class="control-label">Enter Pedal Type</label>
+                <select asp-for="PedalType" class="form-control">
+                    <option value="">Choose Pedal Type</option>
+                    <option value="Distortion">Distortion</option>
+                    <option value="Reverb">Reverb</option>
+                    <option value="Modulation">Modulation</option>
+                    <option value="Delay">Delay</option>
+                    <option value="Compression">Comp/EQ</option>
+                    <option value="Filter">Filter</option>
+                </select>
+                <span asp-validation-for="PedalType" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="PedalSubType" class="control-label">Enter Pedal Subtype</label>
+                <input asp-for="PedalSubType" class="form-control" />             
+                <span asp-validation-for="PedalSubType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PedalColor" class="control-label"></label>
+                <input asp-for="PedalColor" class="form-control" />
+                <span asp-validation-for="PedalColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

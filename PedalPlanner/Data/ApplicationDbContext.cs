@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PedalPlanner.Models;
 
 namespace PedalPlanner.Data
 {
@@ -12,5 +13,6 @@ namespace PedalPlanner.Data
             : base(options)
         {
         }
+        public DbSet<PedalPlanner.Models.Pedal> Pedal { get; set; }
     }
 }
