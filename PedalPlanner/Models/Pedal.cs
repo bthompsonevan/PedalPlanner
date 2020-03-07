@@ -13,5 +13,7 @@ namespace PedalPlanner.Models
         public string PedalSubType { get; set; }  // Example: Fuzz
         public string PedalColor { get; set; }  // Example:  Distortion is orange - base off of line6 color scheme
 
+        public ICollection<Rig> Rigs { get; set; }
+
     }
 }

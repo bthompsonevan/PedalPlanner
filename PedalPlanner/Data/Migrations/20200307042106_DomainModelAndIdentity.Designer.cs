@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PedalPlanner.Data;
 
 namespace PedalPlanner.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200307042106_DomainModelAndIdentity")]
+    partial class DomainModelAndIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,14 +261,9 @@ namespace PedalPlanner.Data.Migrations
                     b.Property<int?>("PedalID")
                         .HasColumnType("int");
 
-                    b.Property<string>("identityUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("RigID");
 
                     b.HasIndex("PedalID");
-
-                    b.HasIndex("identityUserId");
 
                     b.ToTable("Rig");
                 });
@@ -327,10 +324,6 @@ namespace PedalPlanner.Data.Migrations
                     b.HasOne("PedalPlanner.Models.Pedal", "pedal")
                         .WithMany("Rigs")
                         .HasForeignKey("PedalID");
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "identityUser")
-                        .WithMany()
-                        .HasForeignKey("identityUserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,5 +14,6 @@ namespace PedalPlanner.Data
         {
         }
         public DbSet<PedalPlanner.Models.Pedal> Pedal { get; set; }
+        public DbSet<PedalPlanner.Models.Rig> Rig { get; set; }
     }
 }
