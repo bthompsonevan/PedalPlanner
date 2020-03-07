@@ -23,16 +23,16 @@ namespace PedalPlanner.Controllers
             return View();
         }
 
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
         public IActionResult PedalCollection()
         {
             return View();
         }
-
-        public IActionResult AddPedal()
-        {
-            return View();
-        }
-
+    
         public IActionResult Privacy()
         {
             return View();
