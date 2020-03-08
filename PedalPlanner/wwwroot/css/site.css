@@ -7,6 +7,8 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -22,6 +24,18 @@ a {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+ }
+
+.nav-item {
+    padding-right: 20px;
+}
+
+.navbar-brand a:hover{
+    font-weight:600;
+}
+
+.nav-item a:hover {
+    font-weight:500;
 }
 
 /* Sticky footer styles
