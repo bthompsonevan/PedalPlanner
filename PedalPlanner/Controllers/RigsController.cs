@@ -25,6 +25,11 @@ namespace PedalPlanner.Controllers
             return View(await _context.Rig.ToListAsync());
         }
 
+        public IActionResult MyRigs()
+        {
+            return View();
+        }
+
         // GET: Rigs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
