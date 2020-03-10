@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PedalPlanner.Data;
@@ -13,6 +14,11 @@ namespace PedalPlanner.Controllers
     public class PedalsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private UserManager<ExtraIdentityProperties> userManager;
+
+        //Using to get the current user to display their pedals
+        private Task<ExtraIdentityProperties> CurrentUser =>
+            userManager.FindByNameAsync(HttpContext.User.Identity.Name);
 
         public PedalsController(ApplicationDbContext context)
         {
@@ -27,6 +33,8 @@ namespace PedalPlanner.Controllers
 
         public IActionResult MyPedals()
         {
+          
+
             return View();
         }
 

@@ -8,6 +8,7 @@ namespace PedalPlanner.Models
 {
     public class ExtraIdentityProperties : IdentityUser
     {
+        
         public ICollection<Rig> Rigs { get; set; }
     }
 }

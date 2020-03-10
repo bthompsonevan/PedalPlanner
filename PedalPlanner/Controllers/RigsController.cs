@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,11 @@ namespace PedalPlanner.Controllers
     public class RigsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private UserManager<ExtraIdentityProperties> userManager;
+
+        //using to get the current user so the users rigs can  be displayed
+        private Task<ExtraIdentityProperties> CurrentUser =>
+           userManager.FindByNameAsync(HttpContext.User.Identity.Name);
 
         public RigsController(ApplicationDbContext context)
         {
