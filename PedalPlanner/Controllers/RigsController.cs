@@ -14,10 +14,10 @@ namespace PedalPlanner.Controllers
     public class RigsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private UserManager<ExtraIdentityProperties> userManager;
+        private UserManager<AppUser> userManager;
 
         //using to get the current user so the users rigs can  be displayed
-        private Task<ExtraIdentityProperties> CurrentUser =>
+        private Task<AppUser> CurrentUser =>
            userManager.FindByNameAsync(HttpContext.User.Identity.Name);
 
         public RigsController(ApplicationDbContext context)

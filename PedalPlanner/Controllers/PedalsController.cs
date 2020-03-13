@@ -14,10 +14,10 @@ namespace PedalPlanner.Controllers
     public class PedalsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private UserManager<ExtraIdentityProperties> userManager;
+        private UserManager<AppUser> userManager;
 
         //Using to get the current user to display their pedals
-        private Task<ExtraIdentityProperties> CurrentUser =>
+        private Task<AppUser> CurrentUser =>
             userManager.FindByNameAsync(HttpContext.User.Identity.Name);
 
         public PedalsController(ApplicationDbContext context)

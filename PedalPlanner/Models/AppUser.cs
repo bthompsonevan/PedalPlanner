@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PedalPlanner.Models
 {
-    public class ExtraIdentityProperties : IdentityUser
+    public class AppUser : IdentityUser
     {
         
         public ICollection<Rig> Rigs { get; set; }
