@@ -11,8 +11,9 @@ namespace PedalPlanner.Models
         public int RigID { get; set; }
         public string Instrument { get; set; }
         public int BoardSize { get; set; }
+        public string CreatedBy { get; set; }
         public Pedal pedal { get; set; }
-        public IdentityUser identityUser { get; set; }
+        
 
     }
 }

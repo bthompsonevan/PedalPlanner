@@ -8,7 +8,9 @@ namespace PedalPlanner.Models
 {
     public class AppUser : IdentityUser
     {
-        
+        [PersonalData]
         public ICollection<Rig> Rigs { get; set; }
+        [PersonalData]
+        public ICollection<Pedal> Pedals { get; set; }
     }
 }

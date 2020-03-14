@@ -14,27 +14,41 @@ namespace PedalPlanner.Controllers
     public class PedalsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private UserManager<AppUser> userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
         //Using to get the current user to display their pedals
-        private Task<AppUser> CurrentUser =>
-            userManager.FindByNameAsync(HttpContext.User.Identity.Name);
+        //private Task<AppUser> CurrentUser =>
+        //    userManager.FindByNameAsync(HttpContext.User.Identity.Name);
 
-        public PedalsController(ApplicationDbContext context)
+
+        //public CompetitionsController(UserManager<IdentityUser> userManager)
+        //{
+        //    _userManager = userManager;
+        //}
+
+
+
+        //private Task<AppUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
+        //var user = await GetCurrentUserAsync();
+        //var userId = user?.Id;
+
+        public PedalsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+
         }
 
+       
         // GET: Pedals
         public async Task<IActionResult> Index()
         {
             return View(await _context.Pedal.ToListAsync());
         }
 
-        public IActionResult MyPedals()
+        public async Task<IActionResult> MyPedalsAsync()
         {
-          
-
             return View();
         }
 
@@ -57,8 +71,12 @@ namespace PedalPlanner.Controllers
         }
 
         // GET: Pedals/Create
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync()
         {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            ViewBag.User = user;
+
             return View();
         }
 
@@ -67,13 +85,18 @@ namespace PedalPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PedalID,PedalName,PedalType,PedalSubType,PedalColor")] Pedal pedal)
+        public async Task<IActionResult> Create([Bind("PedalID,PedalName,PedalType,PedalSubType,PedalColor,CreatedBy")] Pedal pedal)
         {
             if (ModelState.IsValid)
             {
+
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+
                 _context.Add(pedal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
+
             }
             return View(pedal);
         }

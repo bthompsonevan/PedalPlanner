@@ -4,6 +4,8 @@
     ViewData["Title"] = "Create";
 
     //TODO:  Get a user to be entered into the last field of the form
+    
+    
 }
 
 <h1>Create Pedal</h1>
@@ -43,9 +45,8 @@
                 <span asp-validation-for="PedalColor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="identityUser" class="control-label"></label>        @*TODO:*@      @*Need to figure out how to use viewbag to insert the user*@
-                <input asp-for="identityUser" class="form-control" />                      @*passed from the controller that it got*@
-                <span asp-validation-for="identityUser" class="text-danger"></span>
+                <input asp-for="CreatedBy" type="hidden" value="@ViewData["user"]" class="form-control" />   @*Field is hidden but still accepting ViewBag data*@
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
