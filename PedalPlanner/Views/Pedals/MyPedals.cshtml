@@ -1,7 +1,44 @@
-﻿@*
+﻿@model IEnumerable<Pedal>
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 
-    <p>TODO:  write code on this page that shows the users pedals they have created.</p>
+<p>TODO:  write code on this page that shows the users pedals they have created.</p>
+
+
+
+<h1>@ViewData["User"]'s Pedals</h1>
+
+<body>
+    <div class="panel-body">
+
+
+        <table class="table table-sm table-responsive table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Pedal Name</th>
+                    <th>Pedal Type</th>
+                    <th>Pedal Sub Type</th>
+                    <th>Pedal Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Pedal p in Model)
+                {
+                <tr>
+                    <td>@p.PedalName</td>
+                    <td>@p.PedalType</td>
+                    <td>@p.PedalSubType</td>
+                    <td>@p.PedalColor</td>
+                 </tr>
+
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
