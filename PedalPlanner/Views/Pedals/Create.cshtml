@@ -37,7 +37,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="PedalColor" class="control-label"></label>
-                <input asp-for="PedalColor" class="form-control" />
+                <select asp-for="PedalColor" class="form-control">
+                    <option value="">Choose Color</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
+                    <option value="Blue">Blue</option>
+                </select>
                 <span asp-validation-for="PedalColor" class="text-danger"></span>
             </div>
             <div class="form-group">
