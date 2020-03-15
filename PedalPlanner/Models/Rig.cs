@@ -15,8 +15,7 @@ namespace PedalPlanner.Models
         public string Instrument { get; set; }
         [Required]
         [Range(1, 30, ErrorMessage = "Pedalboard size must be greater than one and less than 30")]
-        public int BoardSize { get; set; }
-        [Required]        
+        public int BoardSize { get; set; }          
         public string CreatedBy { get; set; }
        
         
