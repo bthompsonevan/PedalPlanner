@@ -16,30 +16,12 @@ namespace PedalPlanner.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
-        //Using to get the current user to display their pedals
-        //private Task<AppUser> CurrentUser =>
-        //    userManager.FindByNameAsync(HttpContext.User.Identity.Name);
-
-
-        //public CompetitionsController(UserManager<IdentityUser> userManager)
-        //{
-        //    _userManager = userManager;
-        //}
-
-
-
-        //private Task<AppUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
-
-        //var user = await GetCurrentUserAsync();
-        //var userId = user?.Id;
-
         public PedalsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
             _userManager = userManager;
 
         }
-
        
         // GET: Pedals
         public async Task<IActionResult> Index()
