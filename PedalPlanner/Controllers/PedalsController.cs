@@ -34,7 +34,7 @@ namespace PedalPlanner.Controllers
             
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            List<Pedal> allPedals = await _context.Pedal.Where(p => p.CreatedBy.Equals(user)).ToListAsync();
+            List<Pedal> allPedals = await _context.Pedal.Where(p => p.CreatedBy.Equals(user.ToString())).ToListAsync();
                
             ViewData["User"] = user;
 
