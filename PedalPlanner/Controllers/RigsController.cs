@@ -14,15 +14,14 @@ namespace PedalPlanner.Controllers
     public class RigsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private UserManager<AppUser> userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        //using to get the current user so the users rigs can  be displayed
-        private Task<AppUser> CurrentUser =>
-           userManager.FindByNameAsync(HttpContext.User.Identity.Name);
 
-        public RigsController(ApplicationDbContext context)
+
+        public RigsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Rigs
@@ -31,9 +30,15 @@ namespace PedalPlanner.Controllers
             return View(await _context.Rig.ToListAsync());
         }
 
-        public IActionResult MyRigs()
+        public async Task<IActionResult> MyRigsAsync()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            List<Rig> allRigs = await _context.Rig.Where(r => r.CreatedBy.Equals(user.ToString())).ToListAsync();
+
+            ViewData["Rig"] = user;
+
+            return View(allRigs);
         }
 
         // GET: Rigs/Details/5
@@ -65,7 +70,7 @@ namespace PedalPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RigID,Instrument,BoardSize")] Rig rig)
+        public async Task<IActionResult> Create([Bind("RigID,Instrument,BoardSize,CreatedBy")] Rig rig)
         {
             if (ModelState.IsValid)
             {
