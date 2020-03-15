@@ -60,8 +60,11 @@ namespace PedalPlanner.Controllers
         }
 
         // GET: Rigs/Create
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync()
         {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            ViewData["Rig"] = user;
+
             return View();
         }
 
@@ -74,6 +77,8 @@ namespace PedalPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+
                 _context.Add(rig);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -12,7 +12,7 @@ namespace PedalPlanner.Models
         public string Instrument { get; set; }
         public int BoardSize { get; set; }
         public string CreatedBy { get; set; }
-        public Pedal pedal { get; set; }
+       
         
 
     }
