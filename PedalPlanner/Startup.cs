@@ -56,7 +56,6 @@ namespace PedalPlanner
             {
                 ctx.Response.Headers.Add("X-Content-Type-Options", "nosniff");
                 ctx.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
-                //ctx.Response.Headers.Add("X-XSS-Protection", "1");
                 ctx.Response.Headers.Add("Cache-Control", "no-cache");
                 await next();
             });
