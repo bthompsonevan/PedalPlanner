@@ -50,6 +50,16 @@ namespace PedalPlanner
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //Using for xtype header issues
+            app.Use(async (ctx, next) =>
+            {
+                ctx.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                ctx.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                ctx.Response.Headers.Add("Cache-Control", "no-cache");
+                await next();
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
